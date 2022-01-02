@@ -1,33 +1,4 @@
 <template>
-<!-- <main>
-    <section v-if="post">
-      <nav class="mb-8" aria-label="go back">
-        <router-back class="block" />
-      </nav>
-
-      <article>
-        <img
-          v-if="post.cover"
-          class="cover-image"
-          :src="post.cover"
-        >
-
-        <h1 class="">{{ post.title }}</h1>
-        <p class="mt-1 mb-8 text-primary-600 dark:text-primary-400">{{ post.description }}</p>
-        <nuxt-content :document="post" />
-        https://www.youtube.com/embed/dfvZ5wveUow
-        <div v-if="post.gallery" class="nuxt-content">
-          <img
-            v-for="image in post.gallery"
-            class="image"
-            :key="image.id"
-            :src="image"
-          >
-        </div>
-      </article>
-    </section>
-  </main> -->
-
 <div class="h-screen bg-cover bg-center flex flex-col flex-wrap dark:text-gray-100 overflow-hidden desktopBgOne bg-white">
     <div class="relative grow w-full" v-if="post">
         <!---->

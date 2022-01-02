@@ -1,10 +1,9 @@
 
 
 <template>
-  <div class="antialiased ">
-    <div >
+<div class="h-full w-full clearfix">
       <ColorModePicker />
       <Nuxt/>
     </div>
-  </div>
+
 </template>
