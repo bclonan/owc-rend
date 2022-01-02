@@ -1,6 +1,8 @@
 ---
 category: design
-title: test
-description: eeee
-url: https://frosty-shirley-b879b5.netlify.app/
+title: Adobe XD Component States (Button Hover)
+description: Learn how to create component states for your project buttons by
+  setting up a master component button inside of Adobe XD with hover and down
+  states.
+url: Adobe XD Component States (Button Hover)
 ---
