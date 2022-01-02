@@ -29,7 +29,7 @@
   </main> -->
 
 <div class="h-screen bg-cover bg-center flex flex-col flex-wrap dark:text-gray-100 overflow-hidden desktopBgOne bg-white">
-    <div class="relative grow w-full">
+    <div class="relative grow w-full" v-if="post">
         <!---->
         <div class="w-full h-full">
             <div class="h-full w-full ">
@@ -73,7 +73,7 @@
                                     <section aria-labelledby="primary-heading" class="min-w-0 flex-1 h-full flex flex-col  " style="height: calc(56.25vw);
                               max-height: calc(100vh - 169px);
                               min-height: 480px;">
-                                        <div id="player-theater-container" class="relative p-0 m-0 w-full h-full text-black bg-black border-0"><iframe src="https://www.youtube.com/embed/tgbNymZ7vqY" class="relative p-0 m-0 w-full text-black h-full bg-black border-0">
+                                        <div id="player-theater-container" class="relative p-0 m-0 w-full h-full text-black bg-black border-0" v-if="post.url"><iframe :src="post.url" class="relative p-0 m-0 w-full text-black h-full bg-black border-0">
                                             </iframe>
                                         </div>
                                         <!-- Your content -->
@@ -138,13 +138,13 @@
                                             <div class="flex-1 py-10 ">
                                                 <div class="flex w-full  justify-between">
                                                     <div>
-                                                        <h3 class="font-medium text-gray-900">Hector Gibbons</h3>
+                                                        <h3 class="font-medium text-gray-900">John Snow</h3>
                                                         <p class="text-xs">1.7m subscribers</p>
                                                     </div>
                                                     <button class="bg-red-600 text-white px-2 uppercase font-semibold"> Subscribe</button>
                                                 </div>
                                                 <div class="mt-4 prose prose-sm max-w-none text-gray-500">
-                                                    <p>Blown away by how polished this icon pack is. Everything looks so consistent and each SVG is optimized out of the box so I can use it directly with confidence. It would take me several hours to create a single icon this good, so it's a steal at this price.</p>
+                                                    <p>{{ post.description }}</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -164,7 +164,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="mt-1 prose prose-sm max-w-none text-gray-500">
-                                                    <p>always had a fascination for the “living on the road” lifestyle. this channel owns!</p>
+                                                    <p>Lorem lorem lorem lorem</p>
                                                 </div>
                                                 <div class="  text-gray-500">
                                                     <span class="relative z-0 inline-flex text-xs  space-x-1">
@@ -194,7 +194,7 @@
 
 <script>
 export default {
-  layout: 'ytlayout',
+    layout: 'ytlayout',
     async asyncData({
         $content,
         params,
@@ -202,7 +202,7 @@ export default {
     }) {
         let post;
         try {
-            post = await $content("projects", params.project).fetch();
+            post = await $content("videos", params.project).fetch();
         } catch (e) {
             error({
                 message: "Video not found"

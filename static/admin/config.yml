@@ -115,3 +115,39 @@ collections:
           summary: "{{fields.image}}",
           field: { label: "Image", name: "image", widget: "image" },
         }
+  - name: "videos"
+    label: "Videos"
+    label_singular: "Video"
+    folder: "content/videos"
+    create: true
+    format: "frontmatter"
+    slug: "{{slug}}"
+    preview_path: "videos/{{slug}}"
+    fields:
+      - {
+          label: "Video Category",
+          name: "category",
+          widget: "select",
+          default: "design",
+          options:
+            [
+              { label: "Design", value: "design" },
+              { label: "Code", value: "code" },
+            ],
+        }
+      - { label: "Title", name: "title", widget: "string", required: true }
+      - {
+          label: "Description",
+          name: "description",
+          widget: "string",
+          required: false,
+        }
+      - { label: "Video Url", name: "url", widget: "string", required: true }
+      - {
+          label: "Keywords",
+          name: "keywords",
+          widget: "list",
+          required: false,
+          summary: "{{fields.tag}}",
+          field: { label: "tag", name: "tag", widget: "string" },
+        }
