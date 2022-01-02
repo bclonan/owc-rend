@@ -1,7 +1,6 @@
 <template>
-  <main>
+  <main class="prose prose-sm sm:prose lg:prose-lg xl:prose-xl mx-auto  dark:prose-invert">
     <section v-if="posts" class="w-full max-w-5xl mx-auto">
-      <h1 class="title">Blog</h1>
       <posts post-type="blog" :amount="10" />
     </section>
   </main>

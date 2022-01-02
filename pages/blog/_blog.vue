@@ -1,20 +1,14 @@
 <template>
-  <main>
-    <section v-if="post">
-      <nav class="mb-8" aria-label="go back">
-        <router-back class="block" />
-      </nav>
+  <!-- <NuxtContent
+    class="prose prose-sm sm:prose lg:prose-lg xl:prose-2xl mx-auto"
+    :document="post"
+  /> -->
+  <main class="prose prose-sm sm:prose lg:prose-lg xl:prose-xl mx-auto  dark:prose-invert">
 
-      <article>
-        <h5
-          v-if="post.createdAt"
-          class="inline-block py-1 px-2 my-2 bg-gray text-white text-sm font-medium rounded-sm whitespace-no-wrap"
-        >{{ formatDate(post.createdAt) }}</h5>
-        <h1 class="">{{ post.title }}</h1>
-        <p class="mt-1 mb-4 text-primary-600 dark:text-primary-400">{{ post.description }}</p>
-        <nuxt-content :document="post" />
-      </article>
-    </section>
+    <article v-if="post">
+        <h1>{{ post.title }}</h1>
+        <NuxtContent  :document="post" />
+    </article>
   </main>
 </template>
 
@@ -25,7 +19,7 @@ export default {
     try {
       post = await $content("blog", params.blog).fetch();
     } catch (e) {
-      error({ message: "Blog post not found" });
+      error({ message: "Post not found" });
     }
     return { post };
   },

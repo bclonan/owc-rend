@@ -64,7 +64,11 @@ export default {
   /*
    ** Global CSS
    */
-  css: ['@/assets/css/main.pcss'],
+  // css: ['@/assets/css/main.pcss'],
+  css: [
+    // '@/assets/css/main.pcss',
+    '@/assets/css/main.pcss',
+  ],
   /*
    ** Plugins to load before mounting the App
    */
@@ -72,11 +76,20 @@ export default {
   /*
    ** Nuxt.js dev-modules
    */
-  buildModules: ['@nuxtjs/color-mode', '@nuxtjs/tailwindcss', '@nuxtjs/svg', '@nuxtjs/pwa'],
+  buildModules: ['@nuxtjs/color-mode', '@nuxtjs/svg', '@nuxtjs/pwa', '@nuxt/postcss8'],
   /*
    ** Nuxt.js modules
    */
   modules: ['@nuxt/content', 'nuxt-purgecss'],
+  hooks: {
+    'content:file:beforeInsert': (document) => {
+      if (document.extension === '.md') {
+        const { time } = require('reading-time')(document.text)
+
+        document.readingTime = time
+      }
+    }
+  },
   /*
    ** Build configuration
    */
@@ -84,19 +97,23 @@ export default {
     extractCSS: true,
     postcss: {
       plugins: {
-        'postcss-preset-env': postcssPresetEnv({
-          stage: 1,
-          features: {
-            'nesting-rules': false
-          }
-        }),
-        'postcss-easing-gradients': postcssEasingGradients
+        // 'postcss-preset-env': postcssPresetEnv({
+        //   stage: 1,
+        //   features: {
+        //     'nesting-rules': false
+        //   }
+        // }),
+        // 'postcss-easing-gradients': postcssEasingGradients,
+        // require('tailwindcss/nesting'),
+        "postcss-nesting": {},
+        tailwindcss: {},
+        autoprefixer: {},
       }
     },
     /*
      ** You can extend webpack config here
      */
-    extend(config, ctx) {}
+    extend(config, ctx) { }
   },
   /*
    ** Custom additions configuration
@@ -104,11 +121,6 @@ export default {
   // ? The content property: https://content.nuxtjs.org/configuration
   content: {
     dir: 'content'
-  },
-  tailwindcss: {
-    viewer: false, // disabled because it causes `Error: Cannot find module 'tailwindcss/resolveConfig'`, fixed in https://github.com/nuxt-community/tailwindcss-module/pull/303
-    cssPath: '~/assets/css/main.pcss',
-    exposeConfig: false // enables `import { theme } from '~tailwind.config'`
   },
   purgeCSS: {
     mode: 'postcss',
