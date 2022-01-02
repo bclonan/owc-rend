@@ -1,6 +1,7 @@
 <template>
   <main>
     <section>
+      <Header />
       <template v-if="error.statusCode === 404">
         <h1 class="title">{{ error.message || 'Page Not Found' }}</h1>
         <h2 class="subtitle">404</h2>

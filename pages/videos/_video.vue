@@ -1,8 +1,8 @@
 <template>
 <div class="h-screen bg-cover bg-center flex flex-col flex-wrap dark:text-gray-100 overflow-hidden desktopBgOne bg-white">
-    <div class="relative grow w-full" v-if="post">
-        <!---->
-        <div class="w-full h-full">
+    <div class="relative grow w-full" >
+
+        <div class="w-full h-full" v-if="post">
             <div class="h-full w-full ">
                 <div class="absolute top-0 bottom-0 left-0 right-0 flex flex-col m-0">
                     <!-- header -->
@@ -173,7 +173,7 @@ export default {
     }) {
         let post;
         try {
-            post = await $content("videos", params.project).fetch();
+            post = await $content("videos", params.video).fetch();
         } catch (e) {
             error({
                 message: "Video not found"
